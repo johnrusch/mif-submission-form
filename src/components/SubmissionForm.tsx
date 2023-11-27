@@ -19,7 +19,7 @@ export default function SubmissionForm() {
   }
 
   return (
-    <form id="upload-form" method="post" onSubmit={submit}>
+    <form id="upload-form" onSubmit={submit}>
       <input type="text" name="title" placeholder="Title" />
       <input type="text" name="artist" placeholder="Artist"  />
       <textarea
