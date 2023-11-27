@@ -1,16 +1,10 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import SubmissionForm from '../../components/SubmissionForm';
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
-    <form id="upload-form" method="post">
-      <input type="text" name="title" placeholder="Title" required />
-      <input type="text" name="artist" placeholder="Artist" required />
-      <textarea name="description" placeholder="Short Description" required
-      ></textarea>
-      <input type="file" name="file" required />
-      <button type="submit">Upload Song</button>
-    </form>
+    <SubmissionForm />
   </main>
 </Layout>

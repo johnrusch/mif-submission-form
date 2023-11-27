@@ -1,12 +1,14 @@
 import { useState } from "preact/hooks";
 
-export default function Form() {
-  const [responseMessage, setResponseMessage] = useState("");
 
-  async function submit(e: SubmitEvent) {
+export default function SubmissionForm() {
+  const [responseMessage, setResponseMessage] = useState("");
+  console.log("lskdjflksjdflkj")
+  async function submit(e: Event) {
     e.preventDefault();
+    console.log("hello?????")
     const formData = new FormData(e.target as HTMLFormElement);
-    const response = await fetch("/api/feedback", {
+    const response = await fetch("/api/submit", {
       method: "POST",
       body: formData,
     });
@@ -18,14 +20,14 @@ export default function Form() {
 
   return (
     <form id="upload-form" method="post" onSubmit={submit}>
-      <input type="text" name="title" placeholder="Title" required />
-      <input type="text" name="artist" placeholder="Artist" required />
+      <input type="text" name="title" placeholder="Title" />
+      <input type="text" name="artist" placeholder="Artist"  />
       <textarea
         name="description"
         placeholder="Short Description"
-        required
+        
       ></textarea>
-      <input type="file" name="file" required />
+      <input type="file" name="file"  />
       <button type="submit">Upload Song</button>
     </form>
   );

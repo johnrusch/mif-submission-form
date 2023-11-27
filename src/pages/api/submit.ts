@@ -1,4 +1,6 @@
 import type { APIRoute } from "astro";
+import * as AWS from 'aws-sdk';
+
 
 export const POST: APIRoute = async ({ request }) => {
   const data = await request.formData();
@@ -7,6 +9,7 @@ export const POST: APIRoute = async ({ request }) => {
   const message = data.get("message");
   // Validate the data - you'll probably want to do more than this
   if (!name || !email || !message) {
+    console.log("where is it?")
     return new Response(
       JSON.stringify({
         message: "Missing required fields",
@@ -15,6 +18,7 @@ export const POST: APIRoute = async ({ request }) => {
     );
   }
   // Do something with the data, then return a success response
+  console.log("yay!")
   return new Response(
     JSON.stringify({
       message: "Success!",
