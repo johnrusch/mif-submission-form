@@ -1,10 +1,37 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import SubmissionForm from '../../components/SubmissionForm';
+import * as AWS from 'aws-sdk';
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const title = data.get("title");
+    const artist = data.get("artist");
+    const description = data.get("description");
+    const file = data.get("file");
+    console.log("title", title, "and i hope i work too...")
+    // Do something with the data
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
 ---
 
 <Layout title="Welcome to Astro.">
-  <main>
+    <!-- <form method="POST">
+      <input type="text" name="title" placeholder="Title"  />
+      <input type="text" name="artist" placeholder="Artist"  />
+      <textarea
+        name="description"
+        placeholder="Short Description"
+        
+      ></textarea>
+      <input type="file" name="file"  />
+      <button type="submit">Upload Song</button>
+    </form> -->
     <SubmissionForm />
-  </main>
+
 </Layout>
