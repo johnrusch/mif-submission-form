@@ -1,35 +1,12 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import SubmissionForm from '../../components/SubmissionForm.tsx';
-import { POST } from "../api/submit.ts";
-
-// if (Astro.request.method === "POST") {
-//   try {
-//     console.log("request");
-//     const data = await Astro.request;
-//     let response = await POST(data)
-//     // Do something with the data
-//   } catch (error) {
-//     if (error instanceof Error) {
-//       console.error(error.message);
-//     }
-//   }
-// }
-
+import { Image } from 'astro:assets';
+import homeIcon from '../../images/homeIcon.png';
 ---
 
 <Layout title="Meditations in Cheer - Song Submission">
-    <!-- <form method="POST">
-      <input type="text" name="title" placeholder="Title"  />
-      <input type="text" name="artist" placeholder="Artist"  />
-      <textarea
-        name="description"
-        placeholder="Short Description"
-        
-      ></textarea>
-      <input type="file" name="file"  />
-      <button type="submit">Upload Song</button>
-    </form> -->
+    <a href="/" class="fixed top-4 right-4 w-24 h-24" style="display: block;"><Image src={homeIcon} alt="to home page" class="w-full h-full rounded-lg" /></a>
     <SubmissionForm client:load />
 
 </Layout>
