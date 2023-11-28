@@ -6,11 +6,15 @@ export default function Form() {
   async function submit(e: SubmitEvent) {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
+
     const response = await fetch("/api/submit", {
       method: "POST",
       body: formData,
     });
     const data = await response.json();
+    if (data.status === 200) {
+      
+    }
     if (data.message) {
       setResponseMessage(data.message);
     }
@@ -27,7 +31,7 @@ export default function Form() {
           id="title"
           name="title"
           required
-          class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+          class="form-input p-2 mt-1 block w-full rounded-md border-gray-300 shadow-sm"
         />
       </div>
       <div class="flex flex-col">
@@ -39,7 +43,7 @@ export default function Form() {
           id="artist"
           name="artist"
           required
-          class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+          class="form-input p-2 mt-1 block w-full rounded-md border-gray-300 shadow-sm"
         />
       </div>
       <div class="flex flex-col">
@@ -49,8 +53,7 @@ export default function Form() {
         <textarea
           id="description"
           name="description"
-          required
-          class="form-textarea mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+          class="form-textarea p-2 mt-1 block w-full rounded-md border-gray-300 shadow-sm"
         ></textarea>
       </div>
       <div class="flex flex-col">
@@ -59,15 +62,30 @@ export default function Form() {
         </label>
         <input
           type="file"
-          id="file"
-          name="file"
+          id="upload"
+          name="upload"
           required
-          class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+          class="p-2 mt-1 block w-full rounded-md shadow-sm"
         />
       </div>
-      <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700">
+      <div class="flex flex-col">
+        <label for="file" class="text-green-700">
+          Very Secret Key
+        </label>
+        <input
+          type="text"
+          id="key"
+          name="key"
+          required
+          class="p-2 mt-1 block w-full rounded-md shadow-sm"
+        />
+      </div>
+      <button
+        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-700 hover:bg-custom-green"
+      >
         Upload Song
       </button>
+
       {responseMessage && <p>{responseMessage}</p>}
     </form>
   );

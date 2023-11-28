@@ -4,9 +4,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        "custom-red": "#D62828", // Replace with the exact hex code from your favicon
-        "custom-green": "#2F8F20", // Replace with the exact hex code from your favicon
-        "custom-gold": "#F5CB5C", // Replace with the exact hex code from your favicon
+        "custom-red": "#d93010", // Replace with the exact hex code from your favicon
+        "custom-green": "#52645c", // Replace with the exact hex code from your favicon
+        "sand": "#f9f2db", // Replace with the exact hex code from your favicon
+        "pinkish": "#FEE2E2",
       },
     },
   },
