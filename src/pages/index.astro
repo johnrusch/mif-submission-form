@@ -3,20 +3,16 @@ import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import { Image } from "astro:assets";
 import addSongIcon from '../images/addSongIcon.png';
+import homeImg from '../images/homeImg.png';
 ---
 
 <Layout title="Meditations in Cheer">
   <div class="container mx-auto p-4">
-		<a href="/submission" class="fixed top-4 right-4 w-24 h-24" style="display: block;"><Image src={addSongIcon} alt="to song submission page" class="w-full h-full rounded-lg" /></a>
-        <header class="text-center py-5">
-            <h1 class="text-3xl font-bold text-green-700">Meditations in Cheer</h1>
-            <p class="text-xl text-green-600">A Holiday Compilation</p>
-        </header>
-        <main>
-            <p class="text-gray-700">
-                Welcome to the home of holiday spirit! Here at Meditations in Cheer, 
-                we're all about spreading joy and cheer with our festive compilation of songs.
-            </p>
+		<a href="/submission" class="fixed top-4 right-4 w-24 h-24" style="display: block;"><Image src={addSongIcon} alt="to song submission page" class="bg-transparent w-full h-full rounded-lg" /></a>
+        <main class="h-full w-full flex justify-center">
+            <h1 class="text-3xl text-white absolute mt-40 drop-shadow-lg z-50 bg-black bg-opacity-40 bg-right-bottom rounded-xl">Meditations in Cheer</h1>
+            <p class="text-3xl text-white text-center absolute bottom-1/4 bg-black bg-opacity-40 bg-right-bottom rounded-xl">A Holiday Compilation</p>
+			<Image src={homeImg} alt="cozy christmas room" class="h-full w-full rounded-3xl" />
             <!-- ... -->
         </main>
     </div>

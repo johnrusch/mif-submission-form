@@ -1,10 +1,14 @@
 import { useState } from "preact/hooks";
+import { navigate } from "astro/transitions/router";
+import Spinner from './Spinner.tsx'
 
 export default function Form() {
   const [responseMessage, setResponseMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   async function submit(e: SubmitEvent) {
     e.preventDefault();
+    setLoading(true);
     const formData = new FormData(e.target as HTMLFormElement);
 
     const response = await fetch("/api/submit", {
@@ -12,8 +16,10 @@ export default function Form() {
       body: formData,
     });
     const data = await response.json();
+    console.log("data response: ", data);
     if (data.status === 200) {
-      
+      setLoading(false);
+      return navigate("/submission/confirmation", { state: data.song });
     }
     if (data.message) {
       setResponseMessage(data.message);
@@ -57,7 +63,7 @@ export default function Form() {
         ></textarea>
       </div>
       <div class="flex flex-col">
-        <label for="file" class="text-green-700">
+        <label for="upload" class="text-green-700">
           Song File
         </label>
         <input
@@ -69,7 +75,7 @@ export default function Form() {
         />
       </div>
       <div class="flex flex-col">
-        <label for="file" class="text-green-700">
+        <label for="key" class="text-green-700">
           Very Secret Key
         </label>
         <input
@@ -80,10 +86,14 @@ export default function Form() {
           class="p-2 mt-1 block w-full rounded-md shadow-sm"
         />
       </div>
-      <button
-        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-700 hover:bg-custom-green"
-      >
-        Upload Song
+      <button class="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-md font-medium rounded-md text-white bg-green-700 hover:bg-custom-green">
+        {loading ? (
+          <div>
+            <Spinner /> <span>"Uploading..."</span>
+          </div>
+        ) : (
+          "Upload Song"
+        )}
       </button>
 
       {responseMessage && <p>{responseMessage}</p>}

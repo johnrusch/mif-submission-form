@@ -1,12 +1,23 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import SubmissionForm from '../../components/SubmissionForm.tsx';
-import { Image } from 'astro:assets';
-import homeIcon from '../../images/homeIcon.png';
+import SubmissionForm from "../../components/SubmissionForm.tsx";
+import { Image } from "astro:assets";
+import homeIcon from "../../images/homeIcon.png";
+
 ---
 
 <Layout title="Meditations in Cheer - Song Submission">
-    <a href="/" class="fixed top-4 right-4 w-24 h-24" style="display: block;"><Image src={homeIcon} alt="to home page" class="w-full h-full rounded-lg" /></a>
+  <main>
+    <a
+      href="/"
+      class="bg-transparent fixed top-4 right-4 w-24 h-24"
+      style="display: block;"
+      ><Image
+        src={homeIcon}
+        alt="to home page"
+        class="w-full h-full rounded-lg"
+      /></a
+    >
     <SubmissionForm client:load />
-
+  </main>
 </Layout>
